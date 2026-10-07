@@ -208,6 +208,10 @@ svg {
   transform: translateY(0);
 }
 
+.skip-link:hover {
+  color: var(--color-on-accent);
+}
+
 .site-header,
 .section-shell,
 .site-footer {
