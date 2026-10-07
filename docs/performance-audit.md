@@ -5,7 +5,7 @@
 - Trang chạy tại `http://127.0.0.1:8123/MSIS207.R11.CTTT.HW1/`, dưới đường dẫn con để kiểm tra URL tương đối.
 - Ảnh hero là SVG nội bộ, kích thước file 941 B. `<img>` khai báo `width="400"` và `height="400"`, có `fetchpriority="high"` vì ảnh nằm trong phần đầu trang, và không bật lazy-load.
 - Trang hiện chỉ có ảnh hero; không có ảnh ngoài màn hình cần lazy-load.
-- Không tải font ngoài, thư viện JavaScript, CDN hoặc tài nguyên từ origin khác. CSS và hai tệp JavaScript lần lượt là 11,313 B, 1,940 B và 649 B; HTML là 7,761 B. Tổng các tệp trang đo được là 22,604 B trước nén HTTP, không tính header.
+- Không tải font ngoài, thư viện JavaScript, CDN hoặc tài nguyên từ origin khác. CSS và hai tệp JavaScript lần lượt là 11,198 B, 1,940 B và 649 B; HTML là 7,234 B. Tổng các tệp trang đo được là 21,962 B trước nén HTTP, không tính header.
 
 ## Lighthouse và chỉ số Web Vitals
 

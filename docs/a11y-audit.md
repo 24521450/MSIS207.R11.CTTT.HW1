@@ -15,7 +15,7 @@
 | Skip-link và landmark | Skip-link trỏ đến `#main-content`; có banner, điều hướng có tên “Điều hướng chính”, main và contentinfo. |
 | Regions và heading | Bốn `section` được đặt tên bằng `aria-labelledby`; chỉ có một `h1`, sau đó là heading `h2` và `h3` theo cấp bậc. |
 | Nhãn form | Cả ba trường có nhãn hiển thị ghép bằng `for`/`id`; tên, email và lời nhắn đều bắt buộc. |
-| Ảnh | Ảnh đại diện mẫu có `alt` mô tả rõ đây chưa phải ảnh thật và có chú thích hiển thị. |
+| Ảnh | Ảnh đại diện minh họa có `alt` nêu rõ đây là hình minh họa; chú thích dưới ảnh đã được gỡ khỏi giao diện. |
 | Theme và thông báo | Nút theme có tên truy cập cùng `aria-pressed`; thông báo form nằm trong `role="status"` với `aria-live="polite"`. |
 | Phần tử `div` | Không có phần tử `div` trong HTML của dự án; xác nhận bằng tìm kiếm mã nguồn. |
 

@@ -556,12 +556,6 @@ svg {
   border-block-start: 1px solid var(--color-border);
 }
 
-.site-footer__note {
-  flex-basis: 100%;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-small);
-}
-
 @media (min-width: 50rem) {
   .theme-toggle {
     margin-inline-start: 0;

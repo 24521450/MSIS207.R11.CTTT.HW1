@@ -27,14 +27,13 @@ docs/keyboard-audit.md        Bằng chứng thao tác bàn phím
 docs/performance-audit.md     Kích thước tài nguyên và giới hạn đo
 ```
 
-## Nội dung cần thay trước khi nộp
+## Nội dung trước khi nộp
 
-- Thay tên “Phạm Như Quân” trong `<title>`, mô tả trang, thương hiệu, `h1` và footer bằng tên của bạn.
-- Điền vai trò/ngành học và phần giới thiệu đang có nhãn `[CẦN THAY: ...]`.
-- Chỉ giữ kỹ năng đã dùng thật; thay các kỹ năng/công cụ mẫu trong danh sách.
-- Thay tên, mô tả, công nghệ và kết quả ở hai thẻ dự án bằng dự án thật. Chỉ thêm liên kết đã kiểm tra hoạt động.
-- Thay `assets/avatar-placeholder.svg` bằng ảnh của bạn; cập nhật `alt` và chú thích cho đúng ảnh mới.
-- Biểu mẫu liên hệ chỉ mô phỏng gửi; chưa có backend và không gửi hay lưu lời nhắn. Giữ nguyên lời giải thích đó hoặc tích hợp backend riêng ngoài phạm vi HW1.
+- Thông tin được cung cấp đã điền: ngành học “Information System”, phần giới thiệu “Interested in data”, và kỹ năng HTML, Excel, Word, Prompt engineering.
+- Tên “Phạm Như Quân” vẫn xuất hiện trong `<title>`, mô tả trang, thương hiệu, `h1` và footer; thay nếu đây không phải tên bạn muốn dùng.
+- Hai thẻ dự án được ghi rõ là mô phỏng và dùng dữ liệu giả lập. Thay bằng dự án bạn thực sự đã làm nếu dùng portfolio để giới thiệu kinh nghiệm cá nhân.
+- Ảnh SVG vẫn là ảnh minh họa; dòng chú thích hiển thị dưới ảnh đã được gỡ. `alt` vẫn mô tả đây là ảnh minh họa cho người dùng trình đọc màn hình.
+- Biểu mẫu liên hệ chỉ mô phỏng gửi; chưa có backend và không gửi hay lưu lời nhắn.
 
 ## Tính năng
 
@@ -61,7 +60,7 @@ Kiểm tra thủ công trong Codex in-app browser ngày 2026-10-07 tại `http:/
 | Accessibility | Landmark, heading, labels, alt và trạng thái được rà thủ công; mọi cặp chữ đã rà đạt tối thiểu 4.5:1 ở cả hai theme. Chi tiết ở [`docs/a11y-audit.md`](docs/a11y-audit.md). |
 | Bàn phím | Skip-link, Enter/Space, Tab/Shift+Tab, focus nhìn thấy rõ và rời form đều đạt; chi tiết ở [`docs/keyboard-audit.md`](docs/keyboard-audit.md). |
 | CSP | Theme và form vẫn hoạt động sau khi tải trang dưới CSP; Console không có lỗi hoặc CSP violation. |
-| Tài nguyên | SVG 941 B; HTML 7,761 B, CSS 11,313 B và JavaScript 2,589 B. Ảnh hero có kích thước 400×400 và fetch priority cao. Chi tiết ở [`docs/performance-audit.md`](docs/performance-audit.md). |
+| Tài nguyên | SVG 941 B; HTML 7,234 B, CSS 11,198 B và JavaScript 2,589 B. Ảnh hero có kích thước 400×400 và fetch priority cao. Chi tiết ở [`docs/performance-audit.md`](docs/performance-audit.md). |
 
 **Lighthouse chưa chạy được:** môi trường không có lệnh/package Lighthouse hoặc API audit trên browser connector. Vì vậy chưa có điểm thật cho Performance, Accessibility, Best Practices, SEO; CLS=0 và LCP<2s ở Fast 3G cũng chưa được xác minh. Không sử dụng số liệu ước tính thay cho báo cáo Lighthouse.
 
