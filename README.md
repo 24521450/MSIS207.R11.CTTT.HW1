@@ -20,11 +20,13 @@ styles.css                    Design tokens, reset, layout responsive
 js/theme.js                   Theme theo hệ điều hành và lưu lựa chọn
 js/contact.js                 Native validation và phản hồi mô phỏng
 assets/avatar-placeholder.svg Ảnh mẫu cục bộ
+assets/favicon.svg           Favicon PNQ cục bộ
 TASK_DECOMPOSITION.md         Thứ tự task, phụ thuộc và hợp đồng
 project-rules.md              Ràng buộc công nghệ/giao diện
 docs/a11y-audit.md            Ma trận tương phản và rà semantic
 docs/keyboard-audit.md        Bằng chứng thao tác bàn phím
-docs/performance-audit.md     Kích thước tài nguyên và giới hạn đo
+docs/performance-audit.md     Kích thước tài nguyên, Lighthouse và giới hạn đo
+reports/lighthouse/           Báo cáo Lighthouse HTML và JSON
 ```
 
 ## Nội dung trước khi nộp
@@ -50,19 +52,21 @@ CSP qua meta chỉ có hiệu lực sau khi trình duyệt đọc tới thẻ. M
 
 ## Kết quả kiểm tra thực tế
 
-Kiểm tra thủ công trong Codex in-app browser ngày 2026-10-07 tại `http://127.0.0.1:8123/MSIS207.R11.CTTT.HW1/` bằng Python HTTP server:
+Kiểm tra trong Codex in-app browser và Lighthouse ngày 2026-10-07 tại `http://127.0.0.1:8137/MSIS207.R11.CTTT.HW1/` bằng Python HTTP server:
 
 | Hạng mục | Kết quả |
 |---|---|
-| Responsive | 375px, 768px và 1440px: không tràn ngang; nav dùng Flexbox, các lưới dùng Grid. |
-| Theme | Nút/`aria-pressed` khớp theme hiển thị; dark và light đã được kiểm tra. Chín kiểm tra logic fallback hệ điều hành, lưu/khôi phục lựa chọn và lỗi storage đều đạt. Browser connector không cho đọc trực tiếp `localStorage`, nên persistence thật sau reload chưa được đo trong browser. |
-| Form | Trường thiếu và email sai bị native validation chặn. Dữ liệu hợp lệ tạo phản hồi mô phỏng, reset form; chuỗi HTML thử nghiệm hiện như văn bản, không tạo node HTML. |
-| Accessibility | Landmark, heading, labels, alt và trạng thái được rà thủ công; mọi cặp chữ đã rà đạt tối thiểu 4.5:1 ở cả hai theme. Chi tiết ở [`docs/a11y-audit.md`](docs/a11y-audit.md). |
-| Bàn phím | Skip-link, Enter/Space, Tab/Shift+Tab, focus nhìn thấy rõ và rời form đều đạt; chi tiết ở [`docs/keyboard-audit.md`](docs/keyboard-audit.md). |
-| CSP | Theme và form vẫn hoạt động sau khi tải trang dưới CSP; Console không có lỗi hoặc CSP violation. |
-| Tài nguyên | SVG 941 B; HTML 7,234 B, CSS 11,198 B và JavaScript 2,589 B. Ảnh hero có kích thước 400×400 và fetch priority cao. Chi tiết ở [`docs/performance-audit.md`](docs/performance-audit.md). |
+| Responsive | Viewport 375px, 768px và 1440px, cả hai theme: document không tràn ngang; các lưới dùng Grid và nav dùng Flexbox. |
+| Theme | Light và dark giữ đúng giao diện/`aria-pressed` sau khi tải lại. Năm kiểm tra logic OS fallback, theme đã lưu, giá trị lỗi, storage bị chặn và đổi OS theme đều đạt. |
+| Form | Space khi trống và Enter với email sai bị native validation chặn. Enter với dữ liệu hợp lệ cho phản hồi mô phỏng; chuỗi `<img src=x onerror=alert(1)>` hiện dạng text, không sinh node ảnh; form được reset. |
+| Accessibility | Audit ban đầu tìm được và sửa hai tên truy cập không khớp chữ nhìn thấy cùng lỗi hover của skip-link. Màu chữ đạt 5.87:1 ở light và 6.95:1 ở dark; focus ring đạt 7.58:1 và 11.28:1. Lighthouse không còn mismatch. Chi tiết tại [`docs/a11y-audit.md`](docs/a11y-audit.md). |
+| Bàn phím | Tab đi qua đủ 14 điều khiển; Shift+Tab đảo ngược đủ thứ tự. Skip-link Enter, theme Space/Enter, form native validation và đường thoát khỏi form đều đạt; không có keyboard trap. Chi tiết tại [`docs/keyboard-audit.md`](docs/keyboard-audit.md). |
+| CSP | Theme và form hoạt động dưới CSP cùng nguồn; script/style ở tệp riêng, không có inline handler/style; Console không có lỗi hoặc vi phạm CSP. |
+| Tài nguyên | Ảnh hero SVG 941 B, 400×400, preload và fetch priority cao; không font ngoài. Favicon trả HTTP 200 ở root và subpath; báo cáo không có favicon.ico 404. Chi tiết tại [`docs/performance-audit.md`](docs/performance-audit.md). |
+| Lighthouse mobile mặc định | Lighthouse 13.5.0, Chrome 154, cả bốn category 100; LCP 970.374 ms, CLS 0. Báo cáo: [HTML](reports/lighthouse/mobile-default.report.html) · [JSON](reports/lighthouse/mobile-default.report.json). |
+| Lighthouse Fast 3G | Cả bốn category 100; LCP 1,344.202 ms, CLS 0; Fast 3G request throttling 150 ms, 1,638.4 Kbps down, 750 Kbps up, CPU 1×. Báo cáo: [HTML](reports/lighthouse/mobile-fast-3g-devtools.report.html) · [JSON](reports/lighthouse/mobile-fast-3g-devtools.report.json). |
 
-**Lighthouse chưa chạy được:** môi trường không có lệnh/package Lighthouse hoặc API audit trên browser connector. Vì vậy chưa có điểm thật cho Performance, Accessibility, Best Practices, SEO; CLS=0 và LCP<2s ở Fast 3G cũng chưa được xác minh. Không sử dụng số liệu ước tính thay cho báo cáo Lighthouse.
+Các báo cáo có một số insight chẩn đoán chưa đạt do Python HTTP server cục bộ không nén nội dung và không gửi cache lifetime; insight render-blocking ghi nhận CSS và script theme đồng bộ trong head. Bốn điểm category vẫn là 100. Chi tiết từng cài đặt, thời gian đo UTC và giới hạn môi trường ở [`docs/performance-audit.md`](docs/performance-audit.md).
 
 ## Ghi chú bảo vệ bài
 
